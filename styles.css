@@ -1,0 +1,176 @@
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: black;
+    padding: 15px 20px;
+}
+
+.logo {
+    color: #00ff00;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #00ff00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn {
+    background: #00ff00;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #008000;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: #333;
+    color: white;
+}
+
+.stock-price {
+    text-align: center;
+    font-size: 18px;
+    color: #00ff00;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Services */
+.services {
+    text-align: center;
+    padding: 50px 20px;
+    background: black;
+    color: white;
+}
+
+.service-box {
+    background: #444;
+    color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 250px;
+}
+
+/* Contact */
+.contact {
+    padding: 50px;
+    background: #222;
+    text-align: center;
+}
+
+.contact h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.contact input,
+.contact textarea {
+    width: 90%;
+    max-width: 500px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+    color: black;
+    display: block;
+    margin: 0 auto;
+}
+
+.contact textarea {
+    height: 120px;
+    resize: none;
+}
+
+.btn {
+    background: #00ff00;
+    color: black;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.btn:hover {
+    background: #008000;
+}
+
+/* Ensure responsiveness */
+@media screen and (max-width: 600px) {
+    .contact input,
+    .contact textarea {
+        width: 95%;
+    }
+
+    .btn {
+        width: 90%;
+    }
+}
+
+/* Dark Mode */
+.dark-mode {
+    background: black;
+    color: white;
+}
+
+.dark-mode .hero {
+    background: #222;
+}
+
+.dark-mode .services {
+    background: black;
+}
+
+.dark-mode .service-box {
+    background: #444;
+}
+
+.dark-mode .contact {
+    background: #222;
+}
+
+.dark-mode footer {
+    background: #111;
+}
