@@ -1,0 +1,262 @@
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s, color 0.3s;
+    padding-top: 70px; /* Ensures content starts below fixed header */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: black;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: #00ff00;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Navigation Menu */
+nav {
+    display: flex;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #00ff00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Mobile Menu Styling */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #00ff00;
+    background: none;
+    border: none;
+    padding: 10px;
+}
+
+/* Mobile Navigation */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: relative;
+        z-index: 1100; /* Ensures menu button is on top */
+    }
+
+    nav {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 60px; /* Ensures it appears below header */
+        background: black;
+        z-index: 1000;
+        display: none; /* Initially hidden */
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav ul.nav-active {
+        display: flex; /* Show menu when active */
+    }
+}
+
+/* Button */
+.btn {
+    background: #00ff00;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    color: black;
+}
+
+.btn:hover {
+    background: #008000;
+}
+
+/* Fix Button Text Styling */
+.btn a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.btn a:hover {
+    color: black;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: #333;
+    color: white;
+}
+
+/* Stock Price Section */
+.stock-price {
+    text-align: center;
+    font-size: 18px;
+    color: #00ff00;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Services */
+.services {
+    text-align: center;
+    padding: 50px 20px;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.service-box {
+    background: #444;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 320px;
+    text-align: center;
+    border: 1px solid #00ff00;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.5);
+}
+
+/* Contact Form */
+.contact {
+    padding: 50px;
+    background: #222;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Input Styling */
+.contact input,
+.contact textarea {
+    width: 90%;
+    max-width: 500px;
+    padding: 12px;
+    border: 2px solid #00ff00;
+    border-radius: 8px;
+    background: #111;
+    color: white;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+    transition: 0.3s;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    border-color: #00ff00;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+/* About Section */
+.about {
+    background: black;
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 1px solid #00ff00;
+    margin-top: 50px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: black;
+    font-size: 14px;
+    border-top: 1px solid grey;
+}
+
+/* Responsive Layout for Mobile */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+        text-align: center;
+    }
+
+    .hero {
+        padding: 50px 15px;
+    }
+
+    .services {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-box {
+        width: 90%;
+    }
+
+    .contact input,
+    .contact textarea {
+        width: 95%;
+    }
+
+    .btn {
+        width: 90%;
+    }
+}
+
+/* Ensure Images Scale Properly */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
