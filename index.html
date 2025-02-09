@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWAYUSA330 Trading Strategies Website</title>
+
+    <!-- Add Meta Description Here -->
+    <meta name="description" content="Unlock the power of smart trading with SWAYUSA330. Get expert insights, proven strategies, and financial guidance to achieve consistent profits and freedom.">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+    <style>
+        /* Global Styles */
+        body {
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 70px;
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: black;
+            padding: 15px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            color: limegreen;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: limegreen;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Buttons */
+        .btn {
+            background: limegreen;
+            border: none;
+            padding: 12px 18px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #00cc00;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 20px;
+            background: #111;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* Bitcoin Price */
+        .stock-price {
+            color: limegreen;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        /* Services Section */
+        .services {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-box {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 320px;
+            text-align: center;
+            border: 1px solid limegreen;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Contact Section - Centered */
+        .contact {
+            background: #111;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 60vh;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .contact input, .contact textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #222;
+            color: white;
+            border: 1px solid grey;
+            border-radius: 5px;
+        }
+
+        /* About Section */
+        .about {
+            background: black;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid limegreen;
+            margin-top: 50px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: black;
+            font-size: 14px;
+            border-top: 1px solid grey;
+        }
+
+        /* Media Queries for Mobile */
+        @media screen and (max-width: 768px) {
+            .logo {
+                font-size: 18px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .btn {
+                padding: 10px 14px;
+                font-size: 14px;
+            }
+
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact input, .contact textarea {
+                width: 100%;
+            }
+
+            .container {
+                width: 95%;
+            }
+
+            .hero {
+                padding: 40px 15px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <h1 class="logo">SWAYUSA330</h1>
+            <button class="menu-toggle">☰</button> <!-- Menu Button -->
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="market-strategies.html">Market Strategies</a></li>
+                    <li><a href="financial-coaching.html">Financial Coaching</a></li>
+                    <li><a href="trading-insights.html">Trading Insights</a></li>
+                    <li><a href="about-sway.html">About Sway</a></li>
+                    <li><a href="trading-strategies.html">Trading Strategy</a></li>
+                    <li><a href="seo-optimized.html">Join The Community</a></li>
+                    <li><a href="login.html">Login</a></li>  <!-- Fixed closing tag -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <section class="hero">
+            <h2>Empowering Traders</h2>
+            <p>Strategies, Insights, and Tools To Master The Market</p>
+            <a href="#services" class="btn">Explore Services</a>
+        </section>
+
+        <!-- Live Bitcoin Price -->
+        <p id="stock-price" class="stock-price">Fetching Bitcoin Price...</p>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <a href="market-strategies.html" class="service-box">
+                <h3>📈 Market Strategies</h3>
+                <p>Master technical & fundamental analysis for consistent profits.</p>
+            </a>
+            
+            <a href="financial-coaching.html" class="service-box">
+                <h3>💰 Financial Coaching</h3>
+                <p>Personalized coaching to help you build wealth and financial freedom.</p>
+            </a>
+
+            <a href="trading-insights.html" class="service-box">
+                <h3>📊 Trading Insights</h3>
+                <p>Daily insights, trade setups, and risk management techniques.</p>
+            </a>
+            <a href="trading-strategies.html" class="service-box">
+                <h3>🎯 Blue Print</h3>
+                <p>A trading strategy is a structured approach to buying and selling assets based on technical analysis, market trends, and risk management to maximize profits while minimizing losses.</p>
+            </a>
+            <a href="about-sway.html" class="service-box">
+                <h3>📝 About Sway</h3>
+                <p>Sway is a dedicated trader and strategist, committed to mastering the markets and helping others navigate the path to financial success.</p>
+            </a>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <h2>📩 Contact Us</h2>
+            <form action="https://formspree.io/f/mrbekdre" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <input type="hidden" name="_replyto" value="swayusa3@gmail.com">
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="seo-optimized.html" class="btn">📈 Join The Community</a>
+    </div>
+
+    <!-- About Section -->
+    <section class="about">
+        <h2>About Us</h2>
+        <p>This website is dedicated to empowering traders with top-tier strategies, insights, and financial education.
+           Our goal is to help individuals master the markets through expert guidance, in-depth analysis, and
+           personalized coaching.</p>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 SWAYUSA330. All rights reserved.</p>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a>
+    </footer>
+
+   <!-- Bitcoin Price Fetching Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        async function fetchStockPrice() {
+            try {
+                let response = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
+                let data = await response.json();
+                let bitcoinPrice = parseFloat(data.bpi.USD.rate.replace(/,/g, "")).toFixed(2);
+
+                // ✅ Fixed Syntax
+                document.getElementById('stock-price').innerText = `Bitcoin Price: $${bitcoinPrice}`;
+            } catch (error) {
+                console.error("Error fetching Bitcoin Price:", error);
+                document.getElementById('stock-price').innerText = "Error fetching Bitcoin Price";
+            }
+        }
+
+        fetchStockPrice();
+        setInterval(fetchStockPrice, 5000);
+    });
+</script>
+
+<!-- External JavaScript File -->
+<script src="app.js"></script>
+
+</body>
+</html>
