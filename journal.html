@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Journal</title>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <style>
+        :root {
+            --background-color: #000000;
+            --text-color: #00ff00;
+            --accent-color: #008000;
+            --hover-glow: rgba(0, 255, 0, 0.4);
+            --dark-panel: #111;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--background-color);
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .journal-container {
+            max-width: 90%;
+            margin: 30px auto;
+            padding: 25px;
+            background: var(--dark-panel);
+            border-radius: 12px;
+            box-shadow: 0px 0px 25px var(--accent-color);
+        }
+
+        #calendar {
+            max-width: 100%;
+            margin: auto;
+            background: var(--background-color);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 20px var(--accent-color);
+            color: var(--text-color);
+        }
+
+        .fc-daygrid-day {
+            background: var(--background-color) !important;
+            border: 1px solid var(--dark-panel);
+            cursor: pointer;
+            transition: 0.3s;
+            color: var(--text-color) !important;
+        }
+
+        .fc-toolbar-title {
+            color: var(--text-color) !important;
+            font-size: 24px;
+        }
+
+        .fc-daygrid-day-number {
+            color: var(--text-color) !important;
+            font-weight: bold;
+        }
+
+        .fc-col-header-cell {
+            color: var(--text-color) !important;
+            font-weight: bold;
+        }
+
+        /* Prevent hover effect on events */
+        .fc-event {
+            pointer-events: auto;
+            transition: none !important;
+        }
+
+        /* Subtle glow only on empty cells */
+        .fc-daygrid-day:not(:has(.fc-event)):hover {
+            box-shadow: 0 0 10px var(--hover-glow);
+            transition: 0.3s;
+        }
+
+        /* Win & Loss Event Styles */
+        .win-event {
+            background: rgba(0, 255, 0, 0.7) !important;
+            color: black !important;
+            border-radius: 8px;
+        }
+
+        .loss-event {
+            background: rgba(255, 0, 0, 0.7) !important;
+            color: white !important;
+            border-radius: 8px;
+        }
+
+        /* Trade Form */
+        .trade-form {
+            display: none;
+            margin: 20px auto;
+            padding: 20px;
+            background: var(--dark-panel);
+            border-radius: 12px;
+            box-shadow: 0 0 20px var(--accent-color);
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+
+        .trade-form input, .trade-form select, .trade-form button, .trade-form textarea {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            background: black;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .trade-form textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .trade-form button {
+            background: var(--accent-color);
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .trade-form button:hover {
+            background: var(--hover-glow);
+            box-shadow: 0 0 12px var(--hover-glow);
+        }
+    </style>
+</head>
+<body>
+    <div class="journal-container">
+        <h1>📊 Trading Journal</h1>
+        <h3>Welcome, <span id="usernameDisplay">Trader</span>!</h3>
+        <div id="calendar"></div>
+    </div>
+
+    <div class="trade-form" id="tradeForm">
+        <h3>Log/Edit a Trade</h3>
+        <input type="text" id="tradeDate" readonly>
+        <input type="text" id="tradeTicker" placeholder="Enter Ticker (e.g., TSLA, AAPL)" required>
+        <select id="tradeType">
+            <option value="Win">✅ Win</option>
+            <option value="Loss">❌ Loss</option>
+        </select>
+        <input type="number" id="tradeAmount" placeholder="Profit/Loss Amount (e.g., 500, -300)" required>
+        <textarea id="tradeNotes" placeholder="Trade Notes (Optional)"></textarea>
+        <button onclick="saveTrade()">SAVE TRADE</button>
+        <button onclick="deleteTrade()">DELETE TRADE</button>
+        <button onclick="closeTradeForm()">CLOSE</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const username = localStorage.getItem("username") || "Trader";
+            document.getElementById("usernameDisplay").innerText = username;
+            let trades = JSON.parse(localStorage.getItem(username + "_trades") || "[]");
+    
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: trades,
+                selectable: true,
+                dateClick: function(info) {
+                    document.getElementById("tradeDate").value = info.dateStr;
+                    document.getElementById("tradeForm").style.display = "block";
+                },
+                eventClick: function(info) {
+                    document.getElementById("tradeDate").value = info.event.startStr;
+                    document.getElementById("tradeTicker").value = info.event.extendedProps.ticker;
+                    document.getElementById("tradeType").value = info.event.extendedProps.amount > 0 ? "Win" : "Loss";
+                    document.getElementById("tradeAmount").value = info.event.extendedProps.amount;
+                    document.getElementById("tradeNotes").value = info.event.extendedProps.notes;
+                    document.getElementById("tradeForm").setAttribute("data-event-id", info.event.id);
+                    document.getElementById("tradeForm").style.display = "block";
+                },
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek'
+                }
+            });
+            calendar.render();
+    
+            window.saveTrade = function() {
+                let date = document.getElementById("tradeDate").value;
+                let ticker = document.getElementById("tradeTicker").value.toUpperCase();
+                let type = document.getElementById("tradeType").value;
+                let amount = document.getElementById("tradeAmount").value;
+                let notes = document.getElementById("tradeNotes").value;
+                let tradeId = document.getElementById("tradeForm").getAttribute("data-event-id");
+    
+                // If editing an existing trade
+                if (tradeId) {
+                    trades = trades.filter(trade => trade.id !== tradeId);
+                }
+    
+                let tradeData = {
+                    id: Date.now().toString(),
+                    title: `${ticker} - ${type} ($${amount})`,
+                    start: date,
+                    extendedProps: { ticker: ticker, amount: amount, notes: notes },
+                    classNames: [type === "Win" ? "win-event" : "loss-event"],
+                };
+    
+                trades.push(tradeData);
+                localStorage.setItem(username + "_trades", JSON.stringify(trades));
+                calendar.addEvent(tradeData);
+                alert("Trade logged successfully!");
+                closeTradeForm();
+            };
+    
+            window.deleteTrade = function() {
+                let tradeId = document.getElementById("tradeForm").getAttribute("data-event-id");
+    
+                if (!tradeId) {
+                    alert("No trade selected to delete.");
+                    return;
+                }
+    
+                trades = trades.filter(trade => trade.id !== tradeId);
+                localStorage.setItem(username + "_trades", JSON.stringify(trades));
+    
+                let event = calendar.getEventById(tradeId);
+                if (event) {
+                    event.remove();
+                }
+    
+                alert("Trade deleted successfully!");
+                closeTradeForm();
+            };
+    
+            window.closeTradeForm = function() {
+                document.getElementById("tradeForm").style.display = "none";
+                document.getElementById("tradeForm").removeAttribute("data-event-id");
+            };
+        });
+    </script>
+    
+</body>
+</html>
