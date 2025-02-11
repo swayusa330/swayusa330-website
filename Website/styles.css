@@ -1,0 +1,357 @@
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: white;
+    transition: background 0.3s, color 0.3s;
+    padding-top: 70px; /* Ensures content starts below fixed header */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: black;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo {
+    color: #00ff00;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Navigation Menu */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+/* Navigation Links */
+nav ul li a {
+    color: white;
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+/* On hover, change color to green */
+nav ul li a:hover, nav ul li a:focus {
+    color: #00ff00;
+}
+
+/* Active state for the selected icon */
+nav ul li a:active {
+    color: #00ff00;
+}
+
+/* Remove underline from all links */
+a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: #00ff00 !important;
+}
+
+/* Mobile Navigation Fix */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    header {
+        padding-bottom: 15px;
+    }
+    
+    body {
+        padding-top: 90px;
+    }
+}
+
+/* Contact Form Styling */
+.contact input,
+.contact textarea {
+    width: 90%;
+    max-width: 500px;
+    padding: 12px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    background: #111;
+    color: white;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Input Focus Effect */
+.contact input:focus,
+.contact textarea:focus {
+    border-color: #00ff00;
+    outline: none;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    background: white;
+    font-weight: bold;
+    padding: 12px 18px;
+    border-radius: 5px;
+    border: 2px solid black;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Button Hover and Click Effect */
+.btn:hover, 
+.btn:active {
+    background: black;
+    color: white;
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+/* Service Boxes */
+.services {
+    text-align: center;
+    padding: 50px 20px;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.service-box {
+    background: #111;
+    color: white !important;
+    padding: 20px;
+    border-radius: 10px;
+    width: 320px;
+    text-align: center;
+    border: 2px solid #00ff00;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.service-box h3, .service-box p {
+    color: white !important;
+}
+
+.service-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.8);
+}
+
+/* Fixing purple text issue */
+.service-box a {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Hide mobile menu button on desktop */
+.menu-toggle {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: black;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-menu.nav-active {
+        display: flex;
+    }
+}
+
+/* 🔥 Styles for Login & Signup System */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+/* 🔥 Styling for the buttons */
+.auth-buttons .btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    background: limegreen;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.auth-buttons .btn:hover {
+    background: #00cc00;
+}
+
+/* 🔥 Popup Forms (Login & Signup) */
+.auth-form {
+    display: none; /* Hide by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.8);
+    width: 300px;
+    z-index: 9999; /* Make sure it’s above everything */
+}
+
+/* 🔥 Input fields inside Login/Signup */
+.auth-form input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid limegreen;
+    background: #111;
+    color: white;
+    border-radius: 5px;
+}
+
+/* 🔥 Buttons inside forms */
+.auth-form button {
+    background: limegreen;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* 🔥 Button Hover Effect */
+.auth-form button:hover {
+    background: #00cc00;
+}
+
+/* 🔥 Close Button */
+.close-btn {
+    background: red;
+    margin-top: 10px;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+/* 🔥 Make sure it looks good on mobile */
+@media screen and (max-width: 768px) {
+    .auth-buttons {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+.trade-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 255, 0, 0.2);
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    color: white;
+    font-size: 14px;
+}
+
+.trade-entry .loss {
+    background: rgba(255, 0, 0, 0.2);
+    color: red;
+}
+
+.trade-entry .win {
+    background: rgba(0, 255, 0, 0.2);
+    color: limegreen;
+}
+
+.delete-trade {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: red;
+    font-size: 14px;
+}
+/* Mobile Navigation Fix */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: black;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+}
